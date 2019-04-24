@@ -35,6 +35,7 @@ if(isset($argv[1])){
      			$testar = curl_exec($verificacao);
      			$pegar = strstr($testar, "<int>405</int>", 1);
      			$info = curl_getinfo($verificacao);
+		        $pos = strpos($verificacao, "405");
      			if($pegar == "" AND $info['http_code'] == "200"){
      				echo "\n[+] YUUUUP, XMLRPC ATIVADO em $alvo, B).\n";
      			}elseif($info['http_code'] == "403"){
@@ -72,6 +73,7 @@ if(isset($argv[1])){
      			curl_setopt($verificacao, CURLOPT_POSTFIELDS, $postdata);
      			$testar = curl_exec($verificacao);
      			$pegar = strstr($testar, "<int>405</int>", 1);
+			$pos = strpos($verificacao, "405");
      			$info = curl_getinfo($verificacao);
      			if($pegar == "" AND $info['http_code'] == "200"){
      				echo "\n[+] YUUUUP, XMLRPC ATIVADO em $alvo, B).\n";
